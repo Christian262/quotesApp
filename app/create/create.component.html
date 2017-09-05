@@ -1,0 +1,22 @@
+<h1>Add a Quote!</h1>
+
+<section>
+
+    <div class="inputs">
+        <form (submit)="onSubmit(formData)" #formData="ngForm">
+            <textarea [(ngModel)]="newQuote.body" required name="body" minlength="4" #body="ngModel" rows="5" cols="40"></textarea>
+
+            <input name="author" [(ngModel)]="newQuote.author" required minlength="1" #author="ngModel" type="text"><br />
+
+            <button type="submit" [hidden]="!formData.valid">Add Quote!</button>
+
+
+        </form>
+    </div>
+
+    <div class="validations">
+        <span *ngIf="!body.valid" class="invalid quote">Quote can't be blank!</span>
+        <span *ngIf="!author.valid" class="invalid author">Author must be filled out!</span>
+    </div>
+
+</section>
